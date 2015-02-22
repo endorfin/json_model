@@ -1,6 +1,15 @@
-# JsonModel
+# Json Model
 
 Simple persist your model data to a .json file
+
+| Project                 |  Json Model       |
+|------------------------ | ----------------- |
+| gem name                |  json_model       |
+| license                 |  [MIT][license]   |
+| version                 |  [![Gem Version](https://badge.fury.io/rb/json_model.png)](http://badge.fury.io/rb/json_model) |
+| continuous integration  |  [![Build Status](https://secure.travis-ci.org/endorfin/json_model.png?branch=master)](https://travis-ci.org/endorfin/json_model) |
+| test coverage           |  [![Coverage Status](https://coveralls.io/repos/endorfin/json_model/badge.svg)](https://coveralls.io/r/endorfin/json_model)
+| homepage                |  [https://github.com/endorfin/json_model][homepage] |
 
 ## Installation
 
