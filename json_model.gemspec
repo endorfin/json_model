@@ -9,12 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["René Kersten"]
   spec.email         = ["rene.kersten@gmail.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
-  spec.summary       = %q{Manage SSH Connections}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{persist your model data to a .json file}
+  spec.homepage      = "https://github.com/endorfin/json_model"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
