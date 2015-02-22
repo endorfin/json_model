@@ -2,7 +2,7 @@
 
 Simple persist your model data to a .json file
 
-| Project                 |  Json Model       |
+| Project                 |                   |
 |------------------------ | ----------------- |
 | gem name                |  json_model       |
 | license                 |  [MIT][license]   |
@@ -74,7 +74,12 @@ Book.all.map{|book| puts "#{book.id} - #{book.name} by #{book.author}" }
 
     $ ruby book.rb
 
+## License
 
+[MIT License][license]
+
+[license]: https://github.com/endorfin/json_model/blob/master/MIT-LICENSE
+[homepage]: https://github.com/endorfin/json_model
 
 ## Contributing
 
