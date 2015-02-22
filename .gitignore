@@ -7,3 +7,4 @@ test/config.yml
 *.sublime*
 mymodel.json
 test.json
+coverage/
