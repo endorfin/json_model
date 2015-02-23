@@ -7,3 +7,8 @@ end
 
 desc "Run tests"
 task :default => :test
+
+desc "Coverage Report"
+task :coverage do
+  system('bundle exec coveralls report')
+end
