@@ -64,7 +64,7 @@ module JsonModel
     end
 
     def filename
-      @filename ||= "#{ancestors.first}.json".downcase
+      @filename = "#{ancestors.first}.json".downcase
       File.expand_path(@filename)
     end
 
@@ -92,14 +92,10 @@ module JsonModel
     def destroy(entry)
       entries = all
 
-      if entry.respond_to?(:id)
-        index = entries.index {|e| e.id == entry.id }
-        entries.delete_at(index)
-        save_entries(entries)
-        return true
-      end
-
-      false
+      index = entries.index {|e| e.id == entry.id }
+      entries.delete_at(index)
+      save_entries(entries)
+      return true
     end
 
     def load_entries

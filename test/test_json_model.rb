@@ -53,9 +53,9 @@ describe "Test including JsonModel" do
     MyModel.filename.must_equal filename
   end
 
-  # it "filename can be overwritten" do
-  #   assert_send [MyModel, :filename=, 'test.json']
-  # end
+  it "filename can be overwritten" do
+    assert_send [MyModel, :filename=, 'test.json']
+  end
 
   it "has a 'all' ClassMethod which returns an empty Array" do
     assert_empty MyModel.all
@@ -120,16 +120,12 @@ describe "Test including JsonModel" do
     assert_instance_of MyModel, retval
   end
 
-  it "model respond to attributes" do
-    MyModel.must_respond_to :attributes
+  it "instance respond to attributes" do
+    mymodel.must_respond_to :attributes
   end
 
   it "list all attributes, set by 'field' method" do
-    assert_equal MyModel.attributes, [:id, :name]
-  end
-
-  it "object respond to attributes" do
-    mymodel.must_respond_to :attributes
+    assert_equal mymodel.attributes, [:id, :name]
   end
 
   it "find_by other fields than id" do
@@ -161,9 +157,9 @@ describe "Test including JsonModel" do
     mymodel.must_respond_to :destroy
   end
 
-  it "model respond to destroy" do
+  it "instance respond to destroy" do
     mymodel.save
-    assert_send [MyModel, :destroy, mymodel]
+    assert_send [mymodel, :destroy]
   end
 
   it "found 3 entries using find_all(name: 'Test')" do
