@@ -1,4 +1,5 @@
 require 'minitest_helper'
+require 'json_model'
 
   class MyModel
     include JsonModel
