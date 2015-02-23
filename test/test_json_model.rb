@@ -165,4 +165,15 @@ describe "Test including JsonModel" do
     assert_send [MyModel, :destroy, mymodel]
   end
 
+  it "found 3 entries using find_all(name: 'Test')" do
+    MyModel.new({name: 'Test'}).save
+    MyModel.new({name: 'Fake'}).save
+    MyModel.new({name: 'Test'}).save
+    MyModel.new({name: 'Test'}).save
+
+    #retval = MyModel.all
+    retval = MyModel.find_all(name: 'Test')
+    retval.size.must_equal 3
+  end
+
 end

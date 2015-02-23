@@ -45,6 +45,15 @@ module JsonModel
       end
     end
 
+    def find_all(hash)
+      entries = []
+      if hash.instance_of? Hash
+        hash.each {| key, value | entries = all.find_all{|e| e.send(key) == value} }
+      end
+
+      entries
+    end
+
     def new_id
       ids = all.map(&:id)
       ids.max.to_i + 1
