@@ -3,7 +3,6 @@
 [![Gem Version](https://badge.fury.io/rb/json_model.png)](http://badge.fury.io/rb/json_model)
 [![Build Status](https://secure.travis-ci.org/endorfin/json_model.png?branch=master)](https://travis-ci.org/endorfin/json_model)
 [![Coverage Status](https://coveralls.io/repos/endorfin/json_model/badge.svg)](https://coveralls.io/r/endorfin/json_model)
-[![Coverage Status](https://coveralls.io/repos/endorfin/json_model/badge.svg)](https://coveralls.io/r/endorfin/json_model)
 [![Codeclimate](https://d3s6mut3hikguw.cloudfront.net/github/endorfin/json_model/badges/gpa.svg)](https://codeclimate.com/github/endorfin/json_model)
 
 Simple persist your model data to a .json file
