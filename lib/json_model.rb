@@ -100,7 +100,7 @@ module JsonModel
 
     def load_entries
       entries = []
-      if File.exists?(filename)
+      if File.exist?(filename)
         file = File.read(filename)
         file = '[]' if file.length.zero?
         entries = JSON.parse(file)

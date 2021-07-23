@@ -11,7 +11,7 @@ describe "Test including JsonModel" do
 
   before do
     filename = File.expand_path('mymodel.json')
-    FileUtils.rm(filename) if File.exists?(filename)
+    FileUtils.rm(filename) if File.exist?(filename)
   end
 
   let(:mymodel) { MyModel.new({name: 'Test'}) }
@@ -37,11 +37,11 @@ describe "Test including JsonModel" do
   end
 
   it "has a id attribute after initialize, that is nil" do
-    mymodel.id.must_be_nil
+    _(mymodel.id).must_be_nil
   end
 
   it "respond to new_record?" do
-    mymodel.must_respond_to :new_record?
+    _(mymodel).must_respond_to :new_record?
   end
 
   it "is new after initialize" do
@@ -50,11 +50,12 @@ describe "Test including JsonModel" do
 
   it "filename method returns mymodel.json" do
     filename = File.expand_path('mymodel.json')
-    MyModel.filename.must_equal filename
+    _(MyModel.filename).must_equal filename
   end
 
   it "filename can be overwritten" do
-    assert_send [MyModel, :filename=, 'test.json']
+    # assert_send [MyModel, :filename=, 'test.json']
+    assert_respond_to(MyModel, :filename=)
   end
 
   it "has a 'all' ClassMethod which returns an empty Array" do
@@ -63,11 +64,12 @@ describe "Test including JsonModel" do
 
   it "new_id returns entries id max value + 1" do
     retval = MyModel.send(:new_id)
-    retval.must_equal 1
+    _(retval).must_equal 1
   end
 
   it "has a 'save' ClassMethod which receives to object" do
-    assert_send [MyModel, :save, mymodel]
+    # assert_send [MyModel, :save, mymodel]
+    assert_respond_to(mymodel, :save)
   end
 
   it "returns the entry after save" do
@@ -82,26 +84,26 @@ describe "Test including JsonModel" do
 
   it "has a to_json" do
     retval = mymodel.to_json
-    retval.must_equal '{"name":"Test"}'
+    _(retval).must_equal '{"name":"Test"}'
   end
 
   it "created a mymodel.json on save_entries" do
     entries = []
     MyModel.send(:save_entries, entries)
     filename = MyModel.filename
-    retval = File.exists?(filename)
+    retval = File.exist?(filename)
     assert retval
   end
 
   it "load_entries returns 1 entry after save" do
     mymodel.save
     entries = MyModel.send(:load_entries)
-    entries.size.must_equal 1
+    _(entries.size).must_equal 1
   end
 
   it "has an id after save" do
     mymodel.save
-    mymodel.id.wont_be_nil
+    _(mymodel.id).wont_be_nil
   end
 
   it "is not a new_record? after safe" do
@@ -111,7 +113,7 @@ describe "Test including JsonModel" do
 
   it "find entry by id and return nil if not exists" do
     retval = MyModel.find(100)
-    retval.must_be_nil
+    _(retval).must_be_nil
   end
 
   it "find returns entry if exists" do
@@ -121,7 +123,7 @@ describe "Test including JsonModel" do
   end
 
   it "instance respond to attributes" do
-    mymodel.must_respond_to :attributes
+    _(mymodel).must_respond_to :attributes
   end
 
   it "list all attributes, set by 'field' method" do
@@ -136,13 +138,13 @@ describe "Test including JsonModel" do
 
   it "find_by returns nil if not found" do
     retval = MyModel.find_by(name: 'Test')
-    retval.must_be_nil
+    _(retval).must_be_nil
   end
 
   it "save updates entry, and not create a new entry" do
     mymodel.save
     mymodel.save
-    MyModel.all.size.must_equal 1
+    _(MyModel.all.size).must_equal 1
   end
 
   it "save updates, if it's not a new entry" do
@@ -150,16 +152,11 @@ describe "Test including JsonModel" do
     mymodel.name = 'Updated'
     mymodel.save
     retval = MyModel.find(mymodel.id)
-    retval.name.must_equal 'Updated'
+    _(retval.name).must_equal 'Updated'
   end
 
   it "object respond to destroy" do
-    mymodel.must_respond_to :destroy
-  end
-
-  it "instance respond to destroy" do
-    mymodel.save
-    assert_send [mymodel, :destroy]
+    _(mymodel).must_respond_to :destroy
   end
 
   it "found 3 entries using find_all(name: 'Test')" do
@@ -170,7 +167,7 @@ describe "Test including JsonModel" do
 
     #retval = MyModel.all
     retval = MyModel.find_all(name: 'Test')
-    retval.size.must_equal 3
+    _(retval.size).must_equal 3
   end
 
 end
